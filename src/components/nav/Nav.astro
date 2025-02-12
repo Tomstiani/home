@@ -33,7 +33,7 @@ import MenuLink from "./MenuLink.astro";
   </div>
 
   <aside
-    class="absolute h-dvh w-dvw md:w-72 bg-neutral-800 right-0 top-0 py-4 px-4 flex flex-col translate-x-full transition-transform duration-150"
+    class="absolute h-dvh w-dvw md:w-72 bg-neutral-800 right-0 top-0 py-4 px-4 hidden flex-col translate-x-full transition-transform duration-150"
     id="sidemenu"
     aria-hidden="true"
   >
@@ -83,12 +83,10 @@ import MenuLink from "./MenuLink.astro";
     sidemenu?.setAttribute("aria-hidden", open ? "false" : "true");
 
     if (open) {
-      sidemenu?.classList.remove("hidden");
-      sidemenu?.classList.add("flex");
+      sidemenu?.classList.replace("hidden", "flex");
     } else {
       setTimeout(() => {
-        sidemenu?.classList.add("hidden");
-        sidemenu?.classList.remove("flex");
+        sidemenu?.classList.replace("flex", "hidden");
       }, 150);
     }
   };
