@@ -5,11 +5,15 @@
 
   @keyframes slow-spin {
     from {
-    transform: rotate(0deg)
+      transform: rotate(0deg)
     }
 
     to {
-    transform: rotate(360deg)
+      transform: rotate(360deg)
+    }
   }
-  }
+}
+
+.page-wrapper {
+  @apply max-w-6xl mx-auto px-4 sm:px-8 md:px-16
 }
