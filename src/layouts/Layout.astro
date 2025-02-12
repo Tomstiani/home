@@ -1,7 +1,7 @@
 ---
 const { title, desc } = Astro.props;
 import "../styles/global.css";
-import Nav from "../components/Nav.astro";
+import Nav from "@components/nav/Nav.astro";
 ---
 
 <!doctype html>
@@ -13,8 +13,8 @@ import Nav from "../components/Nav.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<Nav />
 	<body>
+		<Nav />
 		<main>
 			<slot />
 		</main>
@@ -23,8 +23,7 @@ import Nav from "../components/Nav.astro";
 	<style>
 		body {
 			background-color: #222;
+			overflow-x: hidden;
 		}
 	</style>
-
-
 </html>

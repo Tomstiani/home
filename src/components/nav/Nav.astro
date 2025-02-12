@@ -1,0 +1,104 @@
+---
+import Key from "@assets/icons/Key.svg";
+import Close from "@assets/icons/Close.svg";
+import Home from "@assets/icons/Home.svg";
+import Blog from "@assets/icons/Blog.svg";
+import Contact from "@assets/icons/Contact.svg";
+import LinkedIn from "@assets/icons/LinkedIn.svg";
+import Github from "@assets/icons/Github.svg";
+
+import MenuLink from "./MenuLink.astro";
+---
+
+<nav class="w-full text-stone-200 fill-stone-200">
+  <div
+    class="flex mx-auto max-w-6xl justify-between items-center px-4 sm:px-8 md:px-16 py-4"
+  >
+    <h1 class="text-lg font-semibold">// tomstiani</h1>
+    <div class="flex items-center gap-4">
+      <a href="/login" aria-label="Toggle menu"
+        ><Key class="size-6 fill-stone-200" /></a
+      >
+      <button
+        class="flex flex-col gap-1.5 cursor-pointer"
+        aria-label="Toggle sidemenu"
+        id="menu-toggle"
+        aria-expanded="false"
+      >
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+      </button>
+    </div>
+  </div>
+
+  <aside
+    class="absolute h-dvh w-dvw md:w-72 bg-neutral-800 right-0 top-0 py-4 px-4 flex flex-col translate-x-full transition-transform duration-150"
+    id="sidemenu"
+    aria-hidden="true"
+  >
+    <header class="w-full flex justify-end">
+      <Close class="size-6 cursor-pointer" id="close-menu" />
+    </header>
+
+    <ul class="mt-16 flex flex-col gap-8 flex-1">
+      <MenuLink label="home" href="/"><Home class="size-6" /></MenuLink>
+      <MenuLink label="blog" href="/blog"><Blog class="size-6" /></MenuLink>
+      <MenuLink label="get in touch" href="/contact"
+        ><Contact class="size-6" /></MenuLink
+      >
+    </ul>
+
+    <footer
+      class="w-full flex flex-col items-center text-stone-500 fill-stone-500"
+    >
+      <p>Follow my socials</p>
+      <ul class="flex gap-2 mt-4">
+        <li>
+          <a href="https://github.com/Tomstiani" aria-label="Github"
+            ><Github class="size-12 fill-stone-500" /></a
+          >
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/tomstiani/" aria-label="LinkedIn"
+            ><LinkedIn class="size-12 fill-stone-500" /></a
+          >
+        </li>
+      </ul>
+    </footer>
+  </aside>
+</nav>
+
+<script>
+  const menuToggle = document.querySelector(
+    "#menu-toggle",
+  ) as HTMLButtonElement;
+  const closeMenu = document.querySelector("#close-menu") as HTMLButtonElement;
+  const sidemenu = document.querySelector("#sidemenu") as HTMLElement;
+
+  // FIXME: The menu animation is bugged after first open
+  const toggleMenu = (open: boolean) => {
+    sidemenu?.classList.toggle("translate-x-full", !open);
+    menuToggle?.setAttribute("aria-expanded", open ? "true" : "false");
+    sidemenu?.setAttribute("aria-hidden", open ? "false" : "true");
+
+    if (open) {
+      sidemenu?.classList.remove("hidden");
+      sidemenu?.classList.add("flex");
+    } else {
+      setTimeout(() => {
+        sidemenu?.classList.add("hidden");
+        sidemenu?.classList.remove("flex");
+      }, 150);
+    }
+  };
+
+  menuToggle?.addEventListener("click", () => {
+    const isExpanded = menuToggle?.getAttribute("aria-expanded") === "true";
+    toggleMenu(!isExpanded);
+  });
+
+  closeMenu?.addEventListener("click", () => {
+    toggleMenu(false);
+  });
+</script>

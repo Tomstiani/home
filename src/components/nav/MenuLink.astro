@@ -1,0 +1,15 @@
+---
+const { label, href } = Astro.props;
+---
+
+<li>
+  <a href={href}>
+    <div class="h-full w-full text-right">
+      <div class="flex justify-end items-center gap-2">
+        <span class="text-2xl">{label}</span>
+        <slot />
+      </div>
+      <div class="h-0.5 w-full bg-stone-200"></div>
+    </div>
+  </a>
+</li>
