@@ -3,6 +3,7 @@ const { title, desc } = Astro.props;
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "@components/Footer.astro";
+import Disclaimer from "@components/Disclaimer.astro";
 ---
 
 <!doctype html>
@@ -20,6 +21,7 @@ import Footer from "@components/Footer.astro";
       <slot />
     </main>
   </body>
+  <Disclaimer />
   <Footer />
 
 
