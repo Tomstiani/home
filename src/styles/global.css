@@ -11,7 +11,18 @@
     to {
       transform: rotate(360deg)
     }
+
   }
+
+  --font-sans: 'Quicksand', sans-serif;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('../assets/fonts/Quicksand.woff2') format('woff2');
+  font-weight: [300, 400, 500, 600, 700];
+  font-style: [normal, italic];
+  font-display: swap;
 }
 
 .page-wrapper {
